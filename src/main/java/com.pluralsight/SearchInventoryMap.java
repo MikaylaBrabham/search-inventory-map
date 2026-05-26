@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class SearchInventoryMap {
 
     //add hashmaps
-    static HashMap<String, Product> inventory = new HashMap<>();
+    static HashMap<String,Product> inventory = new HashMap<>();
     //add scanner
     static Scanner myScanner = new Scanner(System.in);
 
@@ -39,7 +39,7 @@ public class SearchInventoryMap {
             if (product == null) {
                 System.out.println("product not found.");
             } else {
-                System.out.println("ID: %d Name: %s Price $%.2f%n",
+                System.out.printf("ID: %d Name: %s Price $%.2f%n",
                         product.getId(),
                         product.getName(),
                         product.getPrice());
