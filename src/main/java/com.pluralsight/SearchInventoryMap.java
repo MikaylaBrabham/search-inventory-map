@@ -57,4 +57,24 @@ BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
     String input;
 
     //add while statement to format and parse input
+    while ((input = reader.readLine()) != null) {
+        String[] tokens = input.split("\\|");
+
+        //parse different parts of info
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
