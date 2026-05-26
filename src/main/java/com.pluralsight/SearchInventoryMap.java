@@ -13,7 +13,7 @@ public class SearchInventoryMap {
     //add hashmaps
     static HashMap<String, Product> inventory = new HashMap<>();
     //add scanner
-    Scanner myScanner = new Scanner(System.in);
+    static Scanner myScanner = new Scanner(System.in);
 
     //add main
     public static void main(String[] args) {
@@ -28,53 +28,58 @@ public class SearchInventoryMap {
 
 
             //add if statement
-            if (search.equalsIgnoreCase("X")) ;
-            break;
-        }
+            if (search.equalsIgnoreCase("X")) {
+                break;
+            }
 
-        //add product
-        Product product = inventory.get(search.toLowerCase());
+            //add product
+            Product product = inventory.get(search.toLowerCase());
 
-        //add if statement for product
-        if (product == null) {
-            System.out.println("product not found.");
-        } else {
-            System.out.println("ID: %d Name: %s Price $%.2f%n",
-                    product.getId(),
-                    product.getName(),
-                    product.getPrice());
+            //add if statement for product
+            if (product == null) {
+                System.out.println("product not found.");
+            } else {
+                System.out.println("ID: %d Name: %s Price $%.2f%n",
+                        product.getId(),
+                        product.getName(),
+                        product.getPrice());
+            }
         }
     }
 
-//add load inventory
-public static void loadInventory() {
+    //add load inventory
+    public static void loadInventory() {
 
-//add loadinventory try/ catch buff reader and file reader
-try {
-BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
+//add load inventory try/ catch buff reader and file reader
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
 
 //create string input
-    String input;
+            String input;
 
-    //add while statement to format and parse input
-    while ((input = reader.readLine()) != null) {
-        String[] tokens = input.split("\\|");
+            //add while statement to format and parse input
+            while ((input = reader.readLine()) != null) {
+                String[] tokens = input.split("\\|");
 
-        //parse different parts of info
+                //parse different parts of info
+                int id = Integer.parseInt(tokens[0]);
+                String name = tokens[1];
+                float price = Float.parseFloat(tokens[2]);
+
+                //add variable to keep formatted info
+                Product product = new Product(id, name, price);
+
+                //add inventory variable
+                inventory.put(name.toLowerCase(), product);
+            }
+
+            //add reader close
+            reader.close();
+
+            //add catch exception
+        } catch (Exception e) {
+            System.out.println("Error loading inventory.");
+            e.printStackTrace();
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
