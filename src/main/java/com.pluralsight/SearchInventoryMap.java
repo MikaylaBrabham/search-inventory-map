@@ -22,11 +22,20 @@ static HashMap<String, Product> inventory = new HashMap<>();
 
     //add while true
         while (true) {
-            System.out.println("Enter product name or X to exit: ");
+            System.out.print("Enter product name or X to exit: ");
             String search = myScanner.nextLine();
 
 
             //add if statement
-            if(se)
+            if(search.equalsIgnoreCase("X"));
+            break;
+        }
+
+        //add product
+        Product product = inventory.get(search.toLowerCase());
+
+        //add if statement for product
+        if (product == null) {
+            System.out.println("product not found.");
         }
 }
